@@ -1,6 +1,11 @@
+import { LearnMorePeople } from "./pages/LearnMorePeople";
+
 export const initialStore=()=>{
   return{
     people : [],
+    planets: [],
+    starships: [],
+    learnMorePeople: []
 
 
   }
@@ -22,8 +27,26 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         people: action.payload
+      };
+      case 'llamadoApiPlanets' :
+
+      return {
+        ...store,
+        planets: action.payload
+      };
+      case 'llamadoApiStarships' :
+
+      return {
+        ...store,
+        starships: action.payload
       }
 
+      case 'learnMorePeople' :
+        return {
+          ...store,
+          learnMorePeople: action.payload
+
+        }
     default:
       throw Error('Unknown action.');
   }    
