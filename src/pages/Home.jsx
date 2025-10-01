@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
+  const [colorAleatorio, setColorAleatorio] = useState("red");
   const navigate = useNavigate();
   useEffect(() => {
     llamadoApiPersonajes();
@@ -60,33 +61,46 @@ export const Home = () => {
   }
   const placeholder = `https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/placeholder.jpg`;
 
-  return (
-    <div className="row d-flex justify-content-center align-items-center">
-      <div className="col-12 d-flex justify-content-center align-items-center flex-column text-center mt-5 w-auto h-auto">
-        <h1>Star Wars Cards!</h1>
-        <button
-          onClick={() => {
-            return console.log(store);
-          }}
-        >
-          mostrar cosas dentro de store
-        </button>
+  const colorAleatorioFuncion = () => {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return setColorAleatorio(`rgb(${r},${g},${b})`);
+  };
 
-        <div className="row flex-nowrap row-cols-md-3 divPersonajes overflow-x-auto">
+  return (
+    <div className="row d-flex justify-content-center align-items-center ancho">
+      <div className="col-12 gx-5 d-flex justify-content-center align-items-center flex-column text-center mt-5 w-auto h-auto">
+        <div className="container-fluid row flex-nowrap row-cols-3 overflow-x-auto d-flex justify-content-between">
           {store.people.map((value, index) => {
             return (
-              <div key={value.uid} className="col card m-2">
+              <div key={value.uid} className="col card m-3 p-0">
                 <img
                   src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/characters/${value.uid}.jpg`}
                   alt={value.name}
-                  className="img-fluid rounded"
+                  className="img-fluid rounded altura"
+                  onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src = placeholder;
+                  }}
                 />
-                <p className="h3">{value.name}</p>
-                
-
-                <button>agregar a fav</button>
+                <p className="h3 m-1">{value.name}</p>
 
                 <button
+                  className="btn btn-info m-2"
+                  onClick={() => {
+                    colorAleatorioFuncion();
+                    return dispatch({ type: "favs", payload: value.name });
+                  }}
+                >
+                  <i
+                    style={{ color: colorAleatorio }}
+                    className="fa-solid fa-heart"
+                  ></i>
+                </button>
+
+                <button
+                  className="btn btn-dark m-2"
                   onClick={() => {
                     return navigate(`/learn-morePeople/${value.uid}`);
                   }}
@@ -98,63 +112,84 @@ export const Home = () => {
           })}
         </div>
 
-        <div className="row flex-nowrap row-cols-4 divPersonajes overflow-x-auto">
+        <div className="container row flex-nowrap row-cols-3 overflow-x-auto d-flex justify-content-between">
           {store.planets.map((value, index) => {
             return (
-              <div key={value.uid} className="col card m-2">
+              <div key={value.uid} className="col card m-3 p-0">
                 <img
                   src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/planets/${value.uid}.jpg`}
                   alt={value.name}
-                  className="img-fluid rounded"
+                  className="img-fluid rounded altura"
+                  onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src = placeholder;
+                  }}
                 />
-                <p className="h3">{value.name}</p>
-                <p>{value.uid}</p>
-                <p>{value.url}</p>
-                <button>agregar a fav</button>
+                <p className="h3 m-1">{value.name}</p>
+
                 <button
+                  className="btn btn-info m-2"
                   onClick={() => {
-                    // return navigate(`/learn-more/${value.uid}`)
+                    colorAleatorioFuncion();
+                    return dispatch({ type: "favs", payload: value.name });
+                  }}
+                >
+                  <i
+                    style={{ color: colorAleatorio }}
+                    className="fa-solid fa-heart"
+                  ></i>
+                </button>
+
+                <button
+                  className="btn btn-dark m-2"
+                  onClick={() => {
+                    return navigate(`/learn-morePlanets/${value.uid}`);
                   }}
                 >
                   Saber mas!
-                </button>
-                <button
-                  onClick={() => {
-                    return console.log(imagePlanets(value.uid));
-                  }}
-                >
-                  Magia
                 </button>
               </div>
             );
           })}
         </div>
-        <div className="row flex-nowrap row-cols-4 divPersonajes overflow-x-auto">
+        <div className="container row flex-nowrap row-cols-3 overflow-x-auto ">
           {store.starships.map((value, index) => {
             return (
-              <div key={value.uid} className="col card m-2">
+              <div
+                key={value.uid}
+                className="col card m-3 p-0 d-flex justify-content-between"
+              >
                 <img
                   src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/starships/${value.uid}.jpg`}
                   alt={value.name}
-                  className="img-fluid rounded"
+                  height="5vh"
+                  className="img-fluid rounded altura"
+                  onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src = placeholder;
+                  }}
                 />
-                <p className="h3">{value.name}</p>
-                <p>{value.uid}</p>
-                <p>{value.url}</p>
-                <button>agregar a fav</button>
+                <p className="h3 m-1">{value.name}</p>
+
                 <button
+                  className="btn btn-info m-2"
                   onClick={() => {
-                    // return navigate(`/learn-more/${value.uid}`)
+                    colorAleatorioFuncion();
+                    return dispatch({ type: "favs", payload: value.name });
+                  }}
+                >
+                  <i
+                    style={{ color: colorAleatorio }}
+                    className="fa-solid fa-heart"
+                  ></i>
+                </button>
+                <button
+                  className="btn btn-dark m-2"
+                  onClick={() => {
+                    return navigate(`/learn-moreStarships/${value.uid}`);
                   }}
                 >
                   Saber mas!
-                </button>
-                <button
-                  onClick={() => {
-                    return console.log(imagePlanets(value.uid));
-                  }}
-                >
-                  Magia
                 </button>
               </div>
             );

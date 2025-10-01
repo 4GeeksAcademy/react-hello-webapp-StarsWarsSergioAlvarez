@@ -5,7 +5,10 @@ export const initialStore=()=>{
     people : [],
     planets: [],
     starships: [],
-    learnMorePeople: []
+    learnMorePeople: [],
+    learnMorePlanets:[],
+    learnMoreStarships:[],
+    favs:[],
 
 
   }
@@ -47,6 +50,33 @@ export default function storeReducer(store, action = {}) {
           learnMorePeople: action.payload
 
         }
+      case 'learnMorePlanets' :
+        return {
+          ...store,
+          learnMorePlanets: action.payload
+
+        }
+      case 'learnMoreStarships' :
+        return {
+          ...store,
+          learnMoreStarships: action.payload
+
+        }
+
+        case 'favs':
+          // let favsCopy = [...store.favs]
+          // favsCopy.push(action.payload)
+          return {
+            ...store,
+            favs: [...store.favs, action.payload]
+          }
+
+          case 'eliminarFavs':
+          let newFavs = store.favs.filter((_,i)=> i !== action.payload)
+          return {
+            ...store,
+            favs: newFavs
+          }
     default:
       throw Error('Unknown action.');
   }    

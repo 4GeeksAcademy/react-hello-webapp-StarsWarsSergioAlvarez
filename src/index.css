@@ -1,7 +1,62 @@
+.altura {
+  height: 20vh;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.divPersonajes {
+  width: 100vh;
+}
+
+.colorRojo {
+  color: rgba(255, 0, 0, 0.596);
+}
+
+#root {
+  background-image: url("/workspaces/react-hello-webapp-StarsWarsSergioAlvarez/src/assets/img/imagenFondoStarsWars.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 4px; 
+}
+*::-webkit-scrollbar-thumb:hover {
+    cursor: grab;
+
+}
 
 
+.card{
+    background-color: rgba(255, 255, 255, 0.315);
+}
 
-.divPersonajes{
+.aplicarFondoTransparente{
+    background-color: rgba(255, 255, 255, 0.315);
+}
 
-    width: 100vh;
+.ancho{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vh;
+}
+
+#root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+}
+
+.alto{
+    height: 100vh;
 }
