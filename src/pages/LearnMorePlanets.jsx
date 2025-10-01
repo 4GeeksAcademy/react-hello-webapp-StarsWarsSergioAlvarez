@@ -31,7 +31,7 @@ export const LearnMorePlanets = () => {
   }
 
   return (
-    <>
+    <div className="alto">
       <div className="container justify-content-center align-items-center flex-column text-center mt-5">
         <div className="row">
           <div className="col-md-5 d-flex justify-content-center align-items-center p-0">
@@ -83,6 +83,6 @@ export const LearnMorePlanets = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };

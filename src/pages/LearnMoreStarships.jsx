@@ -31,7 +31,7 @@ export const LearnMoreStarships = () => {
   }
 
   return (
-    <>
+    <div className="alto">
       <div className="container justify-content-center align-items-center flex-column text-center mt-5">
         <div className="row">
           <div className="col-md-5 d-flex justify-content-center align-items-center p-0">
@@ -44,7 +44,7 @@ export const LearnMoreStarships = () => {
               className="img-fluid rounded card m-2 "
             />
           </div>
-          <div className="col-md-5  d-flex flex-column align-items-center m-3 p-0">
+          <div className="col-md-5  d-flex flex-column align-items-center m-3 p-0 colorRojo">
             <h1>{properties.name}</h1>
             <p className="fs-3">
               Bacon ipsum dolor amet andouille picanha biltong, tongue brisket
@@ -83,6 +83,6 @@ export const LearnMoreStarships = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
